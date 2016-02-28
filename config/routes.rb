@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root 'homes#index'
+
+  resources :projects, only: [:index, :show, :create, :new, :update, :edit, :destroy]
+
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
